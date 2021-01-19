@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 from tensorflow import keras
 
+from utils import predict
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -51,22 +53,10 @@ predictions = model.predict(test_images)
 
 
 # TEST PREDICTIONS
-# pick an index in test_images to predict
-guess = 789
+prediction = model.predict(test_images)
 
-predicted = np.argmax(predictions[guess])
-expected = test_label[guess]
+# view prediction
+index = 5
+label_index = test_label[index]
 
-
-print(f"Expected {class_names[test_label[guess]]}")
-print(f"Guessed {class_names[predicted]}")
-
-if predicted == expected:
-    print('Good Guess!, welldone Model')
-else:
-    print('Oops Wrong, Lets try again')
-
-f = plt.figure(facecolor='b', edgecolor='r', clear=True)
-plt.imshow(test_images[guess])
-plt.show()
-plt.close()
+predict(class_names, test_images, label_index, prediction, index)
