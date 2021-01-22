@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from tensorflow import keras
 
 
 def predict(class_names, test_images, label_index, prediction_model, index):
@@ -18,3 +19,15 @@ def predict(class_names, test_images, label_index, prediction_model, index):
     plt.imshow(test_images[index])
     plt.show()
     plt.close()
+
+
+# https://keras.io/api/datasets/imdb/#getwordindex-function
+word_index = keras.datasets.imdb.get_word_index()
+
+
+# encode input string to array of vocabulary keys
+def encode(text, MAXLEN):
+    tokens = keras.preprocessing.text.text_to_word_sequence(text)
+    tokens = [word_index[word] if word in word_index else 0 for word in tokens]
+    return keras.preprocessing.sequence.pad_sequences([tokens],
+                                                      maxlen=MAXLEN)[0]

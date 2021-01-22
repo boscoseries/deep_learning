@@ -64,3 +64,7 @@ label_index = test_labels[index][0]
 
 
 predict(class_names, test_images, label_index, prediction, index)
+
+
+
+# TODO - Using a Pre0trained Model
