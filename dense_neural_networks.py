@@ -49,9 +49,6 @@ model.fit(train_images, train_label, epochs=4)
 test_loss, test_acc = model.evaluate(test_images, test_label, verbose=1)
 
 # PREDICT() - GENERATES OUTPUT PREDICTION FOR INPUT SAMPLES
-predictions = model.predict(test_images)
-
-# PREDICT
 prediction = model.predict(test_images)
 
 # VIEW PREDICTION
